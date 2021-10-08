@@ -1,0 +1,58 @@
+{
+    "name": "felinestudio/laravel-slack-reporter",
+    "description": "",
+    "keywords": [
+        "Feline-Studio",
+        "laravel",
+        "slack",
+        "error-reporting",
+        "error-reporter"
+    ],
+    "homepage": "https://github.com/Feline-Studio/Laravel-SlackReporter",
+    "license": "GPL-2.0-or-later",
+    "type": "library",
+    "authors": [
+        {
+            "name": "David Day",
+            "email": "david@feline.studio",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "guzzlehttp/guzzle": "^7.3",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FelineStudio\\SlackReporter\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FelineStudio\\SlackReporter\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "FelineStudio\\SlackReporter\\SlackReporterServiceProvider"
+            ],
+            "aliases": {
+                "SlackReporter": "FelineStudio\\SlackReporter\\SlackReporterFacade"
+            }
+        }
+    }
+}
