@@ -9,16 +9,30 @@ use Throwable;
 class SlackReporter
 {
     /**
-     * Handler the exception and send to Slack.
+     * Handler the throwable.
      * 
-     * The request format follows Block Kit visual components of Slack.
+     * If package is enabled and webhook_url is no null, the report would be send.
      * 
      * @param Throwable $e - The exception to handle.
      */
     public function handle(Throwable $e) : void
     {
+        if(config('enable') && !is_null(config('slack_webhook_url'))) {
+            $this->sendReport($e);
+        }
+    }
+
+    /**
+     * Send the throwable to Slack.
+     * 
+     * The request format follows Block Kit visual components of Slack.
+     * 
+     * @param Throwable $e - The exception to handle.
+     */
+    private function sendReport(Throwable $e) : void
+    {
         Http::post(config('slack_webhook_url'), [
-            'text' => config('name') . ' occured ' . $e->getMessage(),
+            'text' => config('name') . ' occured ' . get_class($e),
             'blocks' => [
                 [
                     'type' => 'section',
