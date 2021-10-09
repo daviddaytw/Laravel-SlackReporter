@@ -2,6 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/feline-studio/laravel-slack-reporter.svg?style=flat-square)](https://packagist.org/packages/feline-studio/laravel-slack-reporter)
 [![Total Downloads](https://img.shields.io/packagist/dt/feline-studio/laravel-slack-reporter.svg?style=flat-square)](https://packagist.org/packages/feline-studio/laravel-slack-reporter)
+[![Package Test](https://github.com/Feline-Studio/Laravel-SlackReporter/actions/workflows/test.yml/badge.svg)](https://github.com/Feline-Studio/Laravel-SlackReporter/actions/workflows/test.yml)
 
 Report website error to Slack channel.
 
