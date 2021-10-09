@@ -36,14 +36,29 @@ class SlackReporter
      */
     private function sendReport(Throwable $e) : bool
     {
+        $title =  config('name') . ' occured ' . get_class($e);
         $response = Http::post(config('slack_webhook_url'), [
-            'text' => config('name') . ' occured ' . get_class($e),
+            'text' => $title,
             'blocks' => [
+                [
+                    'type' => 'header',
+                    'text' => [
+                        'type' => 'plain_text',
+                        'text' => $title
+                    ]
+                ],
                 [
                     'type' => 'section',
                     'text' => [
                         'type' => 'mrkdwn',
-                        'text' => $e->__toString()
+                        'text' => "*Message:* {$e->getMessage()}",
+                    ]
+                ],
+                [
+                    'type' => 'section',
+                    'text' => [
+                        "type" => "mrkdwn",
+                        "text" => "*StackTrace:*\n```\n{$e->getTraceAsString()}```\n"
                     ]
                 ]
             ]
