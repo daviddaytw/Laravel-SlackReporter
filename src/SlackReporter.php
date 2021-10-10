@@ -51,14 +51,7 @@ class SlackReporter
                     'type' => 'section',
                     'text' => [
                         'type' => 'mrkdwn',
-                        'text' => "*Message:* {$e->getMessage()}",
-                    ]
-                ],
-                [
-                    'type' => 'section',
-                    'text' => [
-                        "type" => "mrkdwn",
-                        "text" => "*StackTrace:*\n```\n{$e->getTraceAsString()}```\n"
+                        'text' => '*Message:* `' . str_replace('`', '\'', $e->getMessage()) . '`',
                     ]
                 ]
             ]
