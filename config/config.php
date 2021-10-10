@@ -3,19 +3,14 @@
 return [
 
     /**
-     * The Application name
-     */
-    'name' => config('app.name'),
-
-    /**
-     * Option to enable reporter.
-     * The package would only send report when in production by default.
+     * Environemnt that enable reporter.
+     * The package would only send report when in specific environment.
      * 
      */
-    'enable' => (config('app.env') == 'production'),
+    'env' => 'production',
 
     /**
      * The URL of Slack incoming webhook. 
      */
-    'slack_webhook_url' => '',
+    'webhook_url' => '',
 ];

@@ -11,7 +11,7 @@ class SlackReporter
     /**
      * Handler the throwable.
      * 
-     * If package is enabled and webhook_url is no null, the report would be send.
+     * If package is enabled environment and webhook_url is no null, the report would be send.
      * 
      * @param Throwable $e - The exception to handle.
      * 
@@ -19,7 +19,7 @@ class SlackReporter
      */
     public function handle(Throwable $e) : bool
     {
-        if(config('enable') && !empty(config('slack_webhook_url'))) {
+        if(config('slack-reporter.env') == config('app.env') && !empty(config('slack-reporter.webhook_url'))) {
             return $this->sendReport($e);
         }
         return false;
@@ -36,8 +36,8 @@ class SlackReporter
      */
     private function sendReport(Throwable $e) : bool
     {
-        $title =  config('name') . ' occured ' . get_class($e);
-        $response = Http::post(config('slack_webhook_url'), [
+        $title =  config('app.name') . ' occured ' . get_class($e);
+        $response = Http::post(config('slack-reporter.webhook_url'), [
             'text' => $title,
             'blocks' => [
                 [

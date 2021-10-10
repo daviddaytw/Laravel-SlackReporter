@@ -34,7 +34,7 @@ After configuring the package, you can use it to handle error by modifying the `
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            SlackReporter::handle($e);
+            SlackReporterFacade::handle($e);
         });
     }
 ```

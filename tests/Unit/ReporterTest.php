@@ -25,8 +25,8 @@ class ReporterTest extends TestCase
 
         $this->assertFalse($reporter->handle($e));
     
-        config()->set('enable', true);
-        config()->set('slack_webhook_url', 'some webhook url');
+        config()->set('slack-reporter.env', 'production');
+        config()->set('slack-reporter.webhook_url', 'some webhook url');
 
         $this->assertTrue($reporter->handle($e));
     }
