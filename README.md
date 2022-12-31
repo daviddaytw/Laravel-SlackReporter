@@ -6,6 +6,8 @@
 
 Report website error to Slack channel.
 
+> **Deprecated: Please use [Laravel's Slack logging channel](https://laravel.com/docs/9.x/logging#configuring-the-slack-channel) instead!**
+
 ## Installation
 
 You can install the package via composer:
